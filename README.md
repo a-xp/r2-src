@@ -1,6 +1,6 @@
 # Resistance companion app
 
-###Features:
+### Features:
 
 - Contains roles from the Assassin and Hunter expansions
 - Contains a short description of the game rules
