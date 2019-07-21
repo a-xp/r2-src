@@ -1,0 +1,18 @@
+.size-info {
+  text-align: center;
+
+  span:nth-child(1) {
+    color: var(--app-resistance-color);
+    font-size: 1.5em;
+  }
+
+  span:nth-child(2) {
+    color: var(--app-spies-color);
+    font-size: 1.5em;
+  }
+}
+
+.score {
+  font-size: 3em;
+  text-align: center;
+}

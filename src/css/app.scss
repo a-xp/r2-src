@@ -1,0 +1,76 @@
+/* Custom color theme properties */
+:root {
+  --f7-theme-color: #c40b15;
+  --f7-theme-color-rgb: 196, 11, 21;
+  --f7-theme-color-shade: #9d0109;
+  --f7-theme-color-tint: #eb010d;
+
+  --f7-page-bg-color: #efeff4;
+  --f7-list-border-color: #c8c7cc;
+  --f7-list-item-border-color: #c8c7cc;
+  --f7-device-pixel-ratio: 1;
+  --f7-list-media-item-title-font-weight: 700;
+  --f7-block-title-text-transform: uppercase;
+
+  --app-resistance-color: #55a5b0;
+  --app-spies-color: #c40b15;
+  --app-success-color: #00C851;
+  --app-warning-color: #CC0000;
+  --app-neutral-color: #ee957f;
+  overscroll-behavior: none;
+}
+
+/* Your app custom styles here */
+
+.color-spies {
+  color: var(--app-spies-color)
+}
+
+.color-resistance {
+  color: var(--app-resistance-color)
+}
+
+.color-success {
+  color: var(--app-success-color)
+}
+
+.color-warning {
+  color: var(--app-warning-color)
+}
+
+.color-neutral {
+  color: var(--app-neutral-color)
+}
+
+.room-number {
+  color: #c2c0c0;
+  padding: 7px;
+  margin: 0;
+  text-align: center;
+}
+
+.mission-header-bg:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #fff;
+  opacity: 0.6;
+  z-index: 1;
+}
+
+.mission-desc {
+  font-family: monospace;
+  color: #222;
+  font-size: 1.1em;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.mission-result-chips {
+  padding: 7px;
+  text-align: center;
+}
