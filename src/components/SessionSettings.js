@@ -62,10 +62,14 @@ export function SessionSettings(props) {
                             <span slot="title" className={`color-${teamTraits[r.side].color}`}>{r.title}</span>
                         </ListItem>)}
                 </List>
+                <Block>
+                    <Button large fill onClick={onApply}>Start game</Button>
+                </Block>
             </>}
-            <Block>
-                <Button large fill onClick={onApply}>Start game</Button>
-            </Block>
+            {room.members && room.members.length <5 && <Block strong className="text-align-center">
+                Need at least 5 people to start
+            </Block>}
+
         </>
     )
 }

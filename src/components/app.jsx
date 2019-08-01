@@ -118,15 +118,16 @@ class ResistanceApp extends React.Component {
   login() {
     this.setState({errors: {}});
     const {roomId, login, side} = this.state;
+    const trimmedLogin = login.trim();
     if(!roomId){
         this.addError('room', 'Please enter room ID');
         return;
     }
-    if(!login){
+    if(!trimmedLogin){
         this.addError('login', 'Please enter login');
         return;
     }
-    gameApi.join(roomId, login, side).then(cred => {
+    gameApi.join(roomId, trimmedLogin, side).then(cred => {
         this.startListen(cred);
     }).catch(err => {
         console.error(err);
@@ -135,8 +136,9 @@ class ResistanceApp extends React.Component {
   }
   create() {
       const {login, side} = this.state;
+      const trimmedLogin = login.trim();
       this.setState({errors: {}});
-      if(!login){
+      if(!trimmedLogin){
           this.addError('login', 'Please enter login');
           return;
       }
