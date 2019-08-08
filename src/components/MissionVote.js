@@ -50,7 +50,7 @@ export function MissionVote(props) {
             </Block>}
             {!perform[user.num] && <Block strong>
                 <Row>
-                    {getMissionOptions(user.role).map(opt => (
+                    {getMissionOptions(user.role, room.members.length).map(opt => (
                         <Col key={opt}>
                             <Button fill color={choice[opt].colorName} onClick={() => onVote(opt)}>{choice[opt].title}</Button>
                         </Col>

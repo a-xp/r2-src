@@ -14,6 +14,10 @@ const options = {
         title: 'Fail',
         color: 'red'
     },
+    [MISSION_OPT.CHIEF_FAIL]: {
+        title: 'Chief Fail',
+        color: 'red'
+    },
     [MISSION_OPT.REVERSE]: {
         title: 'Reverse',
         color: 'blue'
@@ -30,7 +34,7 @@ export default (props) => {
     return (
         <Page>
             <Navbar>
-                <NavTitle>Turns</NavTitle>
+                <NavTitle>MISSIONS</NavTitle>
             </Navbar>
             {room.status === STATUS.NEW && <Block strong>
                 <p>Session is about to start...</p>

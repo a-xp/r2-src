@@ -307,12 +307,15 @@ export function makeDefectorSwap(members) {
     })
 }
 
-export function getMissionOptions(role) {
+export function getMissionOptions(role, size) {
     if (role === ROLES.REVERSER || role === ROLES.SPY_REVERSER) {
         return [MISSION_OPT.REVERSE, MISSION_OPT.SUCCESS];
     }
+    if(role === ROLES.SPY_CHIEF && size >= 7) {
+        return [MISSION_OPT.CHIEF_FAIL, MISSION_OPT.SUCCESS];
+    }
     if (roleTraits[role].side === TEAM.BAD) {
-        return [MISSION_OPT.FAIL, MISSION_OPT.SUCCESS]
+        return [MISSION_OPT.FAIL, MISSION_OPT.SUCCESS];
     }
     return [MISSION_OPT.SUCCESS];
 }
