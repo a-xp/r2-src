@@ -58,7 +58,7 @@ class ResistanceApp extends React.Component {
                 <Toolbar tabbar labels bottom>
                     <Link tabLink="#view-members" tabLinkActive iconF7="persons" text="Members" />
                     <Link tabLink="#view-board" iconF7="chat" text="Board" />
-                    <Link tabLink="#view-history" iconF7="book" text="Turns" />
+                    <Link tabLink="#view-history" iconF7="book" text="Missions" />
                     <Link tabLink="#view-roles" iconF7="help" text="Roles"/>
                 </Toolbar>
 

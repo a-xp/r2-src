@@ -10,6 +10,7 @@ import {MissionVote} from "@/components/MissionVote";
 import {ROLES, roleTraits} from "@/domain/roles";
 import {missionFailRequirement} from "@/domain/missions";
 import {RoleActionsMessage} from "@/components/RoleActonsMessage";
+import {MissionResult} from "@/components/MissionResult";
 
 
 const statuses = {
@@ -34,7 +35,7 @@ export function Mission(props) {
     return (
         <>
             <Card>
-                <CardHeader className="no-border mission-header-bg" style={headerStyles}>
+                <CardHeader className="no-border mission-header-bg">
                     <p className="mission-desc">Mission - The {ucase(mission.name)}<br/>
                     Status - {statuses[mission.status]}
                     {mission.result && <><br/> Result - {results[mission.result]} </>}
@@ -54,6 +55,7 @@ export function Mission(props) {
             {mission.status === OP_STATUS.PREPARE && mission.leader === user.num && <ParticipantsList/>}
             {mission.status === OP_STATUS.VOTE && <TeamVote/>}
             {mission.status === OP_STATUS.PROGRESS && mission.participants.includes(user.num) && <MissionVote/>}
+            {mission.status === OP_STATUS.INVESTIGATION && mission.result && <MissionResult/>}
             <RoleActionsMessage/>
         </>
     )
