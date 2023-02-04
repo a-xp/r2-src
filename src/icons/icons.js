@@ -29,5 +29,5 @@ export const roleIcons = {
     [ROLES.CHIEF]: props => <ResistanceIcon {...props}/>,
     [ROLES.SPY_CHIEF]: props => <SpyIcon {...props}/>,
     [ROLES.REVERSER]: props => <ResistanceIcon {...props}/>,
-    [ROLES.SPY_REVERSER]: props => <ResistanceIcon {...props}/>,
+    [ROLES.SPY_REVERSER]: props => <SpyIcon {...props}/>,
 };
