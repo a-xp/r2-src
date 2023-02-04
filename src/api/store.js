@@ -1,5 +1,4 @@
-
-function setCred(cred){
+function setCred(cred) {
     localStorage.setItem('cred', JSON.stringify(cred));
 }
 
@@ -10,7 +9,7 @@ function clearCred() {
 function getCred(roomId) {
     const str = localStorage.getItem('cred');
     const cred = str ? JSON.parse(str) : null;
-    if(cred && (!roomId || cred.roomId === roomId)){
+    if (cred && (!roomId || cred.roomId === roomId)) {
         return cred;
     }
 }

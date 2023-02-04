@@ -1,4 +1,4 @@
-import {appColors, EXPANSION, LOAYLTY, MISSION_OPT, TEAM} from "../api/enum";
+import {EXPANSION, LOAYLTY, MISSION_OPT, TEAM} from "../api/enum";
 import {TEXTS} from "@/domain/texts";
 
 export const ROLES = {
@@ -311,7 +311,7 @@ export function getMissionOptions(role, size) {
     if (role === ROLES.REVERSER || role === ROLES.SPY_REVERSER) {
         return [MISSION_OPT.REVERSE, MISSION_OPT.SUCCESS];
     }
-    if(role === ROLES.SPY_CHIEF && size >= 7) {
+    if (role === ROLES.SPY_CHIEF && size >= 7) {
         return [MISSION_OPT.CHIEF_FAIL, MISSION_OPT.SUCCESS];
     }
     if (roleTraits[role].side === TEAM.BAD) {
@@ -346,10 +346,10 @@ export function getBaseRoleCount(roles, size) {
 }
 
 export function getCoreRoles(module, size) {
-    if(module === EXPANSION.HUNTER){
+    if (module === EXPANSION.HUNTER) {
         const result = [ROLES.SPY_CHIEF, ROLES.SPY_HUNTER, ROLES.HUNTER, ROLES.CHIEF];
-        if(size>=8) result.push(ROLES.CHIEF);
-        if(size>=10) result.push(ROLES.SPY_CHIEF);
+        if (size >= 8) result.push(ROLES.CHIEF);
+        if (size >= 10) result.push(ROLES.SPY_CHIEF);
         return result;
     } else {
         return Object.values(roleTraits).filter(r => r.core && r.module === module).map(r => r.id);
@@ -357,14 +357,19 @@ export function getCoreRoles(module, size) {
 }
 
 export function getCoreCount(module, size) {
-    return getCoreRoles(module, size).reduce((res, role) => ({...res, [roleTraits[role].side]: res[roleTraits[role].side] + 1}), {[TEAM.BAD]: 0, [TEAM.GOOD]: 0});
+    return getCoreRoles(module, size).reduce((res, role) => ({
+        ...res,
+        [roleTraits[role].side]: res[roleTraits[role].side] + 1
+    }), {[TEAM.BAD]: 0, [TEAM.GOOD]: 0});
 }
 
 export function getInvestigationResult(role, size) {
     switch (role) {
-        case ROLES.SPY_CHIEF: return size>=7 ? LOAYLTY.SPY_CHIEF : LOAYLTY.CHIEF;
+        case ROLES.SPY_CHIEF:
+            return size >= 7 ? LOAYLTY.SPY_CHIEF : LOAYLTY.CHIEF;
         case ROLES.DUMMY_AGENT:
-        case ROLES.CHIEF: return size>=7 ? LOAYLTY.RESISTANCE_CHIEF : LOAYLTY.CHIEF;
+        case ROLES.CHIEF:
+            return size >= 7 ? LOAYLTY.RESISTANCE_CHIEF : LOAYLTY.CHIEF;
         default:
             return LOAYLTY.NOT_CHIEF;
     }

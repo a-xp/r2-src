@@ -1,5 +1,5 @@
-import React, {useContext, useCallback, useState} from 'react';
-import {BlockTitle, Block, Card, CardContent, CardFooter, CardHeader, Button, List, ListItem} from "framework7-react";
+import React, {useCallback, useContext, useState} from 'react';
+import {Block, BlockTitle, Button, List, ListItem} from "framework7-react";
 import {AppContext} from "@/components/app";
 import {participantsCount} from "@/domain/missions";
 import {gameApi} from "@/api/game";
@@ -30,16 +30,16 @@ export function ParticipantsList(props) {
 
     const onApplyParticipants = useCallback(() => {
         if (participants.length === participantsCount[room.members.length][mission.num]) {
-            if(room.type === EXPANSION.HUNTER && mission.num!==5){
+            if (room.type === EXPANSION.HUNTER && mission.num !== 5) {
                 setStage(2);
-            }else{
+            } else {
                 gameApi.proposeTeam(roomId, participants);
             }
         }
     }, [roomId, participants]);
 
     const onApplyInvestigator = useCallback((e) => {
-        if(investigator!==-1){
+        if (investigator !== -1) {
             gameApi.proposeTeam(roomId, participants, investigator);
         }
     }, [roomId, investigator]);

@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {BlockTitle, Block, Row, Col} from "framework7-react";
+import {Block, Col, Row} from "framework7-react";
 import {AppContext} from "@/components/app";
 import {appColors, MISSION_OPT} from "@/api/enum";
 import {FirearmIcon} from "@/icons/FirearmIcon";
@@ -19,8 +19,8 @@ export function MissionResult() {
     const {mission: {summary}} = ctx;
 
     const rows = [[]];
-    Object.entries(summary).forEach( ([k, count]) => {
-        for(let i = 0;i<count;i++) {
+    Object.entries(summary).forEach(([k, count]) => {
+        for (let i = 0; i < count; i++) {
             if (rows[rows.length - 1].length >= 3) {
                 rows.push([])
             }
@@ -28,18 +28,18 @@ export function MissionResult() {
         }
     });
 
-    while(rows[rows.length - 1].length < 3){
+    while (rows[rows.length - 1].length < 3) {
         rows[rows.length - 1].push(null);
     }
 
     return <>
-            <Block>
-                {rows.map( (row, ri) => <Row key={ri}>
-                    {row.map((r, ci) => r ? <Col key={ci} className="elevation-4 result-card">
-                        {ResultsDisplay[r]}
-                    </Col> : <Col key={ci}/>)}
-                </Row>)}
-            </Block>
-        </>
+        <Block>
+            {rows.map((row, ri) => <Row key={ri}>
+                {row.map((r, ci) => r ? <Col key={ci} className="elevation-4 result-card">
+                    {ResultsDisplay[r]}
+                </Col> : <Col key={ci}/>)}
+            </Row>)}
+        </Block>
+    </>
 
 }

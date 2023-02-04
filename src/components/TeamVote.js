@@ -1,7 +1,7 @@
-import React, {useContext, useCallback} from 'react';
-import {BlockTitle, Block, Card, CardContent, CardFooter, CardHeader, Row, Col, Button, List, ListItem} from "framework7-react";
+import React, {useCallback, useContext} from 'react';
+import {Block, BlockTitle, Button, Col, List, ListItem, Row} from "framework7-react";
 import {AppContext} from "@/components/app";
-import {VOTE, appColors} from "@/api/enum";
+import {appColors, VOTE} from "@/api/enum";
 import {gameApi} from "@/api/game";
 
 export function TeamVote(props) {

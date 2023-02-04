@@ -5,8 +5,8 @@ import {roleTraits} from "./roles";
 
 function vote(mebers, votes, resolution = VOTE.YES) {
     const result = {...votes};
-    mebers.forEach( (m,i) => {
-        if(m.bot && !result[i]){
+    mebers.forEach((m, i) => {
+        if (m.bot && !result[i]) {
             result[i] = resolution;
         }
     });
@@ -16,7 +16,7 @@ function vote(mebers, votes, resolution = VOTE.YES) {
 function createBot() {
     const login = Sentencer.make('{{adjective}} {{noun}}');
     return {
-        login: login[0].toUpperCase()+login.slice(1),
+        login: login[0].toUpperCase() + login.slice(1),
         prefSide: TEAM.RANDOM,
         bot: true
     }
@@ -24,8 +24,8 @@ function createBot() {
 
 function doMission(members, votes) {
     const result = {...votes};
-    members.forEach( (m,i) => {
-        if(m.bot && !result[i]){
+    members.forEach((m, i) => {
+        if (m.bot && !result[i]) {
             result[i] = roleTraits[m.role].side === TEAM.GOOD ? MISSION_OPT.SUCCESS : MISSION_OPT.FAIL;
         }
     });
@@ -34,10 +34,10 @@ function doMission(members, votes) {
 
 function proposeTeam(members, leader, missionNumber) {
     const participants = [];
-    for(let i = 0;i<participantsCount[members.length][missionNumber];i++){
+    for (let i = 0; i < participantsCount[members.length][missionNumber]; i++) {
         let playerNum = leader + i;
-        if(playerNum>=members.length){
-            playerNum-=members.length;
+        if (playerNum >= members.length) {
+            playerNum -= members.length;
         }
         participants.push(playerNum);
     }

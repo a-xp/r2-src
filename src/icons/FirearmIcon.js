@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function FirearmIcon ({size = 20, color='#000'}) {
+export function FirearmIcon({size = 20, color = '#000'}) {
     return (
         <svg viewBox="0 0 19.328 19.328" height={size} width={size}>
             <g>

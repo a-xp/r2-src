@@ -1,5 +1,5 @@
-import React, {useContext, useCallback, useState} from 'react';
-import {BlockTitle, Block, Card, CardContent, CardFooter, CardHeader, Button, List, ListItem, Row, Col, BlockFooter} from "framework7-react";
+import React, {useContext} from 'react';
+import {Block, BlockFooter, BlockTitle, Col, Row} from "framework7-react";
 import {AppContext} from "@/components/app";
 import {TEAM} from "@/api/enum";
 
@@ -9,7 +9,8 @@ export function Score(props) {
 
     return (
         <>
-            <BlockTitle large className="text-align-center">{room.won === TEAM.GOOD ? 'Resistance Won' : 'Spies Won'}</BlockTitle>
+            <BlockTitle large
+                        className="text-align-center">{room.won === TEAM.GOOD ? 'Resistance Won' : 'Spies Won'}</BlockTitle>
             <Block strong>
                 <Row className="score">
                     <Col className="color-resistance">{room.score[TEAM.GOOD] || '0'}</Col>

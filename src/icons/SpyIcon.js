@@ -1,7 +1,7 @@
 import React from 'react';
 import {appColors} from "@/api/enum";
 
-export function SpyIcon (props) {
+export function SpyIcon(props) {
     const {color = appColors.spy, size = 40} = props;
     return (
         <svg viewBox="0 0 297 297" width={size} height={size}>

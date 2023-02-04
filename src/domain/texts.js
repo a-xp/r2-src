@@ -1,5 +1,3 @@
-
-
 const defectorDescription = `At the beginning of the 3rd round and at the very
 start of each subsequent round, flip one card from the Loyalty deck.
 If the card is “No Change”, there is no change of allegiance and play

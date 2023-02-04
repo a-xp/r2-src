@@ -1,17 +1,11 @@
 import db from './firebase';
-import {ACTIONS, EXPANSION, OP_STATUS, STATUS, TEAM} from "./enum";
-import {
-    assignRoles,
-    getDefectorActions,
-    getDefectorTurns,
-    makeDefectorSwap,
-    ROLE_ACTION, ROLES,
-    roleTraits
-} from "../domain/roles";
+import {ACTIONS, OP_STATUS, STATUS, TEAM} from "./enum";
+import {assignRoles, getDefectorTurns, makeDefectorSwap, ROLES} from "../domain/roles";
 import {
     calcMissionStatus,
     calcVotesMajority,
-    createMission, getNextMissionAction,
+    createMission,
+    getNextMissionAction,
     getScore,
     participantsCount
 } from "../domain/missions";
@@ -193,7 +187,12 @@ async function voteTeam(roomId, playerNum, resolution) {
             }
             const result = calcVotesMajority(newVote, room.members.length);
             if (result) {
-                return {...mission, status: result, vote: newVote, nextAction: result === OP_STATUS.REJECTED ? ACTIONS.NEXT_MISSION : null}
+                return {
+                    ...mission,
+                    status: result,
+                    vote: newVote,
+                    nextAction: result === OP_STATUS.REJECTED ? ACTIONS.NEXT_MISSION : null
+                }
             } else {
                 return {...mission, vote: newVote}
             }
@@ -250,7 +249,7 @@ async function performMission(roomId, userNum, resolution) {
             const newMission = {...mission, ...calcMissionStatus(perform, room.members.length, mission.num)};
             const newMissions = replaceLastMission(room.missions, newMission);
             const score = getScore(newMissions);
-            if(newMission.status === OP_STATUS.INVESTIGATION){
+            if (newMission.status === OP_STATUS.INVESTIGATION) {
                 newMission.nextAction = getNextMissionAction(null, newMission.result, score, room.type);
             }
             transaction.update(roomRef, {...room, score, missions: newMissions});
@@ -260,9 +259,9 @@ async function performMission(roomId, userNum, resolution) {
 
 async function investigatorAction(roomId) {
     await updateCurrentMission(roomId, (mission, room) => {
-        if(mission.nextAction === ACTIONS.INVESTIGATOR || mission.nextAction === ACTIONS.LEADER_INVESTIGATION){
+        if (mission.nextAction === ACTIONS.INVESTIGATOR || mission.nextAction === ACTIONS.LEADER_INVESTIGATION) {
             return {...mission, nextAction: ACTIONS.NEXT_MISSION};
-        }else{
+        } else {
             return mission;
         }
     });
@@ -376,7 +375,7 @@ async function reorder(roomId, from, to) {
     await db.runTransaction(async transaction => {
         const roomDoc = await transaction.get(roomRef);
         const room = roomDoc.data();
-        if(room.status === STATUS.NEW){
+        if (room.status === STATUS.NEW) {
             const movedMember = room.members[from];
             const newMembers = [...room.members];
             newMembers.splice(to, 0, newMembers.splice(from, 1)[0]);

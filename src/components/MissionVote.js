@@ -1,5 +1,5 @@
-import React, {useContext, useCallback, useState} from 'react';
-import {BlockTitle, Block, Card, CardContent, CardFooter, CardHeader, Button, List, ListItem, Col, Row} from "framework7-react";
+import React, {useCallback, useContext} from 'react';
+import {Block, Button, Col, Row} from "framework7-react";
 import {AppContext} from "@/components/app";
 import {appColors, MISSION_OPT} from "@/api/enum";
 import {getMissionOptions} from "@/domain/roles";
@@ -52,7 +52,8 @@ export function MissionVote(props) {
                 <Row>
                     {getMissionOptions(user.role, room.members.length).map(opt => (
                         <Col key={opt}>
-                            <Button fill color={choice[opt].colorName} onClick={() => onVote(opt)}>{choice[opt].title}</Button>
+                            <Button fill color={choice[opt].colorName}
+                                    onClick={() => onVote(opt)}>{choice[opt].title}</Button>
                         </Col>
                     ))}
                 </Row>

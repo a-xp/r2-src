@@ -1,9 +1,9 @@
-export function getGameId(){
+export function getGameId() {
     return window.location.search ? window.location.search.slice(1) : '';
 }
 
 
-export function copyStringToClipboard (str) {
+export function copyStringToClipboard(str) {
     const el = document.createElement('textarea');
     el.value = str;
     el.setAttribute('readonly', '');
